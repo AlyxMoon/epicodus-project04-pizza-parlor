@@ -91,6 +91,20 @@ after order is completed, add some kind of fake progress indicator
 
 ## Tests
 
+### Describe Pizza()
+
+```
+Test: The pizza object should be created with default settings (medium size, tomato sauce, mozzarella cheese, no toppings)
+Code: new Pizza()
+Result: Pizza {size: "medium", sauce: "tomato", cheese: "mozzarella", toppings: []}
+```
+
+```
+Test: The pizza object should be created with the default settings overriden by provided arguments
+Code: new Pizza({ size: 'large', sauce: 'none', cheese: 'feta', toppings: ['pepperoni', 'mushrooms'] })
+Result: Pizza {size: "large", sauce: "none", cheese: "feta", toppings: ['pepperoni', 'mushrooms']}
+```
+
 ## Sources and Libraries
 
 ### External Libraries Used
