@@ -23,7 +23,7 @@ const addTestsForPizza = testManager => {
       size: 'large',
       sauce: 'none',
       cheese: 'feta',
-      toppings: ['pepperoni', 'mushrooms'],
+      toppings: ['pepperoni', 'mushroom'],
     }],
     expected: (actual) => {
       return (
@@ -32,7 +32,7 @@ const addTestsForPizza = testManager => {
         actual.cheese === 'feta' &&
         actual.toppings.length === 2 &&
         actual.toppings[0] === 'pepperoni' &&
-        actual.toppings[1] === 'mushrooms'
+        actual.toppings[1] === 'mushroom'
       )
     },
   })
@@ -60,21 +60,21 @@ const addTestsForPizza = testManager => {
   testManager.addTest({
     description: 'Pizza.removeTopping() will remove that topping from the list',
     func: () => {
-      const pizza = new Pizza({ toppings: ['pineapple', 'sausage', 'mushrooms'] })
+      const pizza = new Pizza({ toppings: ['pineapple', 'sausage', 'mushroom'] })
       pizza.removeTopping('sausage')
       return pizza.toppings
     },
-    expected: ['pineapple', 'mushrooms'],
+    expected: ['pineapple', 'mushroom'],
   })
 
   testManager.addTest({
     description: 'Pizza.removeTopping() will do nothing if the topping is not in the list',
     func: () => {
-      const pizza = new Pizza({ toppings: ['pineapple', 'sausage', 'mushrooms'] })
+      const pizza = new Pizza({ toppings: ['pineapple', 'sausage', 'mushroom'] })
       pizza.removeTopping('anchovies')
       return pizza.toppings
     },
-    expected: ['pineapple', 'sausage', 'mushrooms'],
+    expected: ['pineapple', 'sausage', 'mushroom'],
   })
 
   testManager.addTest({

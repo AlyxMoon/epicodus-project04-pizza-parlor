@@ -31,7 +31,6 @@ Pizza.prototype.removeTopping = function (topping) {
 }
 
 Pizza.prototype.getPrice = function () {
-  console.log(this)
   const sizePrice = (pizzaSizes[this.size] || {}).price || 0
   const saucePrice = (pizzaSauces[this.sauce] || {}).price || 0
   const cheesePrice = (pizzaCheeses[this.cheese] || {}).price || 0

@@ -91,7 +91,7 @@ after order is completed, add some kind of fake progress indicator
 
 ## Tests
 
-### Describe Pizza()
+#### Describe class Pizza()
 
 ```
 Test: The pizza object should be created with default settings (medium size, tomato sauce, mozzarella cheese, no toppings)
@@ -101,8 +101,8 @@ Result: Pizza {size: "medium", sauce: "tomato", cheese: "mozzarella", toppings:
 
 ```
 Test: The pizza object should be created with the default settings overriden by provided arguments
-Code: new Pizza({ size: 'large', sauce: 'none', cheese: 'feta', toppings: ['pepperoni', 'mushrooms'] })
-Result: Pizza {size: "large", sauce: "none", cheese: "feta", toppings: ['pepperoni', 'mushrooms']}
+Code: new Pizza({ size: 'large', sauce: 'none', cheese: 'feta', toppings: ['pepperoni', 'mushroom'] })
+Result: Pizza {size: "large", sauce: "none", cheese: "feta", toppings: ['pepperoni', 'mushroom']}
 ```
 
 ```
@@ -124,17 +124,17 @@ Result: pizza.toppings === ['pineapple']
 ```
 Test: Pizza.removeTopping() will remove that topping from the list
 Code: 
-const pizza = new Pizza({ toppings: ['pineapple', 'sausage', 'mushrooms'] })
+const pizza = new Pizza({ toppings: ['pineapple', 'sausage', 'mushroom'] })
 pizza.removeTopping('sausage')
-Result: pizza.toppings === ['pineapple', 'mushrooms']
+Result: pizza.toppings === ['pineapple', 'mushroom']
 ```
 
 ```
 Test: Pizza.removeTopping() will do nothing if the topping is not in the list
 Code: 
-const pizza = new Pizza({ toppings: ['pineapple', 'sausage', 'mushrooms'] })
+const pizza = new Pizza({ toppings: ['pineapple', 'sausage', 'mushroom'] })
 pizza.removeTopping('anchovies')
-Result: pizza.toppings === ['pineapple', 'sausage', 'mushrooms']
+Result: pizza.toppings === ['pineapple', 'sausage', 'mushroom']
 ```
 
 ```
@@ -147,6 +147,35 @@ Result: pizza.getPrice() === 9
 Test: Pizza.getPrice() list the correct price based on set ingredients (prices determined from data/pizzaOptions.js) with some changed ingredients
 Code: new Pizza({ size: 'large', cheese: 'none', toppings: ['pepperoni'] })
 Result: pizza.getPrice() === 17.5
+```
+
+#### Describe class Order()
+
+```
+Test: The order object should be created with default settings (empty pizza array)
+Code: new Order()
+Result: Order {pizzas: []}
+```
+
+```
+Test: Order.addPizza() adds a pizza to the list
+Code:
+const order = new Order()
+return order.addPizza({ size: 'small', sauce: 'none' })
+Result: Order {pizzas: [{ size: 'small', sauce: 'none', cheese: 'mozzarella', toppings: []}]}
+```
+
+```
+Test: Order.getPrice() returns the price of all pizzas combined
+Code:
+const order = new Order()
+order.addPizza({ size: 'small', sauce: 'none' })
+order.addPizza({
+   cheese: 'none',
+   toppings: ['pepperoni', 'pineapple', 'mushroom'],
+})
+return order.getPrice()
+Result: 13.5
 ```
 
 ## Sources and Libraries

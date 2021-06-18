@@ -16,9 +16,13 @@ module.exports = {
     pizzaCheeses: 'readonly',
     pizzaToppings: 'readonly',
 
+    addTestsForOrder: 'readonly',
     addTestsForPizza: 'readonly',
+
     templateTestResult: 'readonly',
     templateTestSpacer: 'readonly',
+
+    Order: 'readonly',
     Pizza: 'readonly',
     TestManager: 'readonly',
   },

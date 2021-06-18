@@ -14,6 +14,7 @@ const addEventListeners = () => {
 const main = () => {
   const testManager = new TestManager()
   addTestsForPizza(testManager)
+  addTestsForOrder(testManager)
   testManager.runTests()
 
   addEventListeners()
