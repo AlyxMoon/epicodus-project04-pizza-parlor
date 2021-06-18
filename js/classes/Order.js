@@ -6,6 +6,7 @@ class Order {
       header: 'body > header',
       beginOrdering: '#begin-ordering',
       content: '.main-section',
+      pizzaForm: '#pizzaForm',
     },
   } = {}) {
     this.pizzas = []
@@ -30,10 +31,32 @@ class Order {
     this.render()
   }
 
+  handlePizzaSubmission (event) {
+    event.preventDefault()
+
+    const size = document.querySelector('#input-pizza-size').value
+    const sauce = document.querySelector('#input-pizza-sauce').value
+    const cheese = document.querySelector('#input-pizza-cheese').value
+    const toppings = [...document.querySelectorAll('#pizzaForm input[type="checkbox"]:checked')].map(element => {
+      return element.value
+    })
+
+    const pizza = this.pizzas[this.pizzas.length - 1]
+    pizza.size = size
+    pizza.sauce = sauce
+    pizza.cheese = cheese
+    pizza.toppings = toppings
+  }
+
   addEventListeners () {
     const elOrder = document.querySelector(this.selectors.beginOrdering)
     if (elOrder) {
       elOrder.addEventListener('click', () => this.beginOrdering())
+    }
+
+    const elPizzaForm = document.querySelector(this.selectors.pizzaForm)
+    if (elPizzaForm) {
+      elPizzaForm.addEventListener('submit', (event) => this.handlePizzaSubmission(event))
     }
   }
 

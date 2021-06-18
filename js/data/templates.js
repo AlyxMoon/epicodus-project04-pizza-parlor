@@ -64,13 +64,13 @@ const templatePizzaForm = ({
 
     return `
       <div class="form-check">
-        <input
-          type="checkbox"
-          id="input-pizza-topping-${type}" 
-          class="form-check-input" 
-          ${selected ? 'checked' : ''}
-        />
         <label for="input-pizza-topping-${type}">
+          <input
+            type="checkbox"
+            id="input-pizza-topping-${type}" 
+            class="form-check-input" 
+            ${selected ? 'checked' : ''}
+          />
           ${type} ($${data.price})
         </label>
       </div>
@@ -78,32 +78,34 @@ const templatePizzaForm = ({
   }).join('')
 
   template.innerHTML = `
-    <form class="row">
-      <div class="col-12">
+    <form id="pizzaForm" class="row">
+      <div class="col-12 my-2">
         <label for="input-pizza-size">Size</label>
-        <select id="input-pizza-size" class="form-select">
+        <select id="input-pizza-size" name="input-pizza-size" class="form-select">
           ${sizeOptions}
         </select>
       </div>
 
-      <div class="col-12">
+      <div class="col-12 my-2">
         <label for="input-pizza-sauce">Sauce</label>
         <select id="input-pizza-sauce" class="form-select">
           ${sauceOptions}
         </select>
       </div>
 
-      <div class="col-12">
+      <div class="col-12 my-2">
         <label for="input-pizza-cheese">Cheese</label>
         <select id="input-pizza-cheese" class="form-select">
           ${cheeseOptions}
         </select>
       </div>
 
-      <div class="col-12">
+      <div class="col-12 my-2">
         <p>Toppings</p>
         ${toppingOptions}
       </div>
+
+      <button type="submit" class="btn btn-primary mt-3">Submit Order</button>
     </form>
   `.trim()
 

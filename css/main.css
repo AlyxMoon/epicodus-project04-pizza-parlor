@@ -17,6 +17,10 @@ p + p {
   margin-top: 1rem;
 }
 
+form label, form input[type="checkbox"] {
+  cursor: pointer;
+}
+
 nav {
   border-bottom: 2px solid #3FB0AC;
 }
