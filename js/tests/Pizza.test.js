@@ -1,6 +1,8 @@
 
 /* eslint-disable-next-line no-unused-vars */
 const addTestsForPizza = testManager => {
+  testManager.addSpacer('class Pizza()')
+
   testManager.addTest({
     description: 'The pizza object should be created with default settings (medium size, tomato sauce, mozzarella cheese, no toppings)',
     func: () => new Pizza(),
@@ -53,5 +55,47 @@ const addTestsForPizza = testManager => {
       return pizza.toppings
     },
     expected: ['pineapple'],
+  })
+
+  testManager.addTest({
+    description: 'Pizza.removeTopping() will remove that topping from the list',
+    func: () => {
+      const pizza = new Pizza({ toppings: ['pineapple', 'sausage', 'mushrooms'] })
+      pizza.removeTopping('sausage')
+      return pizza.toppings
+    },
+    expected: ['pineapple', 'mushrooms'],
+  })
+
+  testManager.addTest({
+    description: 'Pizza.removeTopping() will do nothing if the topping is not in the list',
+    func: () => {
+      const pizza = new Pizza({ toppings: ['pineapple', 'sausage', 'mushrooms'] })
+      pizza.removeTopping('anchovies')
+      return pizza.toppings
+    },
+    expected: ['pineapple', 'sausage', 'mushrooms'],
+  })
+
+  testManager.addTest({
+    description: 'Pizza.getPrice() list the correct price based on set ingredients (prices determined from data/pizzaOptions.js) with default ingredients',
+    func: () => {
+      const pizza = new Pizza()
+      return pizza.getPrice()
+    },
+    expected: 9,
+  })
+
+  testManager.addTest({
+    description: 'Pizza.getPrice() list the correct price based on set ingredients (prices determined from data/pizzaOptions.js) with some changed ingredients',
+    func: () => {
+      const pizza = new Pizza({
+        size: 'large',
+        cheese: 'none',
+        toppings: ['pepperoni'],
+      })
+      return pizza.getPrice()
+    },
+    expected: 17.5,
   })
 }

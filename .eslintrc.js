@@ -11,6 +11,11 @@ module.exports = {
     sourceType: 'module',
   },
   globals: {
+    pizzaSizes: 'readonly',
+    pizzaSauces: 'readonly',
+    pizzaCheeses: 'readonly',
+    pizzaToppings: 'readonly',
+
     addTestsForPizza: 'readonly',
     templateTestResult: 'readonly',
     templateTestSpacer: 'readonly',

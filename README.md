@@ -121,6 +121,34 @@ pizza.addTopping('pineapple')
 Result: pizza.toppings === ['pineapple']
 ```
 
+```
+Test: Pizza.removeTopping() will remove that topping from the list
+Code: 
+const pizza = new Pizza({ toppings: ['pineapple', 'sausage', 'mushrooms'] })
+pizza.removeTopping('sausage')
+Result: pizza.toppings === ['pineapple', 'mushrooms']
+```
+
+```
+Test: Pizza.removeTopping() will do nothing if the topping is not in the list
+Code: 
+const pizza = new Pizza({ toppings: ['pineapple', 'sausage', 'mushrooms'] })
+pizza.removeTopping('anchovies')
+Result: pizza.toppings === ['pineapple', 'sausage', 'mushrooms']
+```
+
+```
+Test: Pizza.getPrice() list the correct price based on set ingredients (prices determined from data/pizzaOptions.js) with default ingredients
+Code: new Pizza()
+Result: pizza.getPrice() === 9
+```
+
+```
+Test: Pizza.getPrice() list the correct price based on set ingredients (prices determined from data/pizzaOptions.js) with some changed ingredients
+Code: new Pizza({ size: 'large', cheese: 'none', toppings: ['pepperoni'] })
+Result: pizza.getPrice() === 17.5
+```
+
 ## Sources and Libraries
 
 ### External Libraries Used

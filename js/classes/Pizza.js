@@ -21,3 +21,23 @@ Pizza.prototype.addTopping = function (topping) {
 
   return this
 }
+
+Pizza.prototype.removeTopping = function (topping) {
+  this.toppings = this.toppings.filter(existingTopping => {
+    return existingTopping !== topping
+  })
+
+  return this
+}
+
+Pizza.prototype.getPrice = function () {
+  console.log(this)
+  const sizePrice = (pizzaSizes[this.size] || {}).price || 0
+  const saucePrice = (pizzaSauces[this.sauce] || {}).price || 0
+  const cheesePrice = (pizzaCheeses[this.cheese] || {}).price || 0
+  const toppingPrice = this.toppings.reduce((sum, topping) => {
+    return sum + ((pizzaToppings[topping] || {}).price || 0)
+  }, 0)
+
+  return sizePrice + saucePrice + cheesePrice + toppingPrice
+}
