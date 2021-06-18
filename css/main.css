@@ -73,6 +73,16 @@ body > header::after {
   animation: shake 1s alternate infinite;
 }
 
+.pizza-item dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 10px 15px;
+}
+
+.pizza-item dl dt {
+  text-align: right;
+}
+
 @keyframes shake {
   0% {
     transform: rotateZ(-5deg);

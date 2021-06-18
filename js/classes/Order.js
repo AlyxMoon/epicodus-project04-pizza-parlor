@@ -71,6 +71,11 @@ class Order {
     if (elPizzaForm) {
       elPizzaForm.addEventListener('submit', (event) => this.handlePizzaSubmission(event))
     }
+
+    const btnAddPizza = document.querySelector('#action-new-pizza')
+    if (btnAddPizza) {
+      btnAddPizza.addEventListener('click', () => this.beginOrdering())
+    }
   }
 
   render () {

@@ -69,6 +69,7 @@ const templatePizzaForm = ({
             type="checkbox"
             id="input-pizza-topping-${type}" 
             class="form-check-input" 
+            value="${type}"
             ${selected ? 'checked' : ''}
           />
           ${type} ($${data.price})
@@ -118,8 +119,55 @@ const templateShowCurrentOrder = ({
 } = {}) => {
   const template = document.createElement('template')
 
+  const pizzasContent = pizzas.map((pizza, index) => {
+    const name = `Pizza ${index + 1}`
+    const toppingsContent = pizza.toppings.map(topping => `
+      <li class="list-group-item">${topping}</li>
+    `).join('')
+
+    return `
+      <div class="pizza-item col-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>${name} $${pizza.price}</h4>
+          </div>
+          <div class="card-body">
+            <dl>
+              <dt>Size</dt>
+              <dd>${pizza.size}</dd>
+
+              <dt>Sauce</dt>
+              <dd>${pizza.sauce}</dd>
+
+              <dt>Sauce</dt>
+              <dd>${pizza.cheese}</dd>
+
+              <dt>Toppings</dt>
+              <dd>
+                <ul class="list-group">${toppingsContent}</ul>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    `
+  })
+
   template.innerHTML = `
-    <span>hi</span>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <button 
+          id="action-new-pizza" 
+          class="btn btn-primary"
+        >Add Another</button>
+        <button 
+          id="action-checkout" 
+          class="btn btn-success"
+        >Checkout</button>
+      </div>
+
+      ${pizzasContent}
+    </div>
   `.trim()
 
   return template.content.firstChild
