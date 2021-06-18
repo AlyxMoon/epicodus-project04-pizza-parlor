@@ -53,6 +53,42 @@ To set up `eslint` though, you need the following:
 - Display the list of pizzas ordered as links that can be clicked for details.
 - Offer a delivery option that then requires address information.
 
+## Rough outline
+
+- Create a list of ingredients with associated price
+- Create a list of sizes with associated price
+
+**Create a pizza class**
+- contain record of what ingredients have been added
+- method to add ingredient
+  - check for duplicate ingredients
+- method to remove ingredient
+- method to set size
+- method to calculate price based on ingredients and size
+
+**Create an order class**
+- contain list of pizzas
+- method to calculate overall price of order based on individual pizzas
+- method to add a new pizza
+- method to remove pizza
+
+**UI stuff**
+- add main page, give some info on the pizza parlor and allow user to begin ordering
+- ordering page, contains main section with current selection and a sidebar with overall order info
+- When user is adding/editing pizza, show pizza with info in the main page
+- when not adding/editing pizza, add prompts to add/edit another or finish order
+- order confirmation page, show information on pizzas order, all the prices, and add checkout button
+
+**Extras**
+
+ability to add notes/request to a pizza and/or order
+ability to add coupon code to reduce price
+ability to add extras such as dipping sauce
+ability add add user account (not actually, just save it to local storage or something)
+check address/map with a pretend address
+add contact page
+after order is completed, add some kind of fake progress indicator
+
 ## Tests
 
 ## Sources and Libraries
