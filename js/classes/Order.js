@@ -86,6 +86,14 @@ class Order {
         this.render()
       })
     }
+
+    const btnCheckout = document.querySelector('#action-checkout')
+    if (btnCheckout) {
+      btnCheckout.addEventListener('click', (event) => {
+        this.state = 'finished-ordering'
+        this.render()
+      })
+    }
   }
 
   render () {
@@ -114,11 +122,20 @@ class Order {
     }
 
     if (this.state === 'finished-pizza') {
-      document.querySelector(this.selectors.header).classList.add('small')
-
       const content = document.querySelector(this.selectors.content)
       const contentTemplate = templateShowCurrentOrder({
         pizzas: this.pizzas,
+        price: this.price,
+      })
+
+      content.innerHTML = ''
+      content.append(contentTemplate)
+    }
+
+    if (this.state === 'finished-ordering') {
+      const content = document.querySelector(this.selectors.content)
+      const contentTemplate = templateFinishedOrdering({
+        pizzaCount: this.pizzas.length,
         price: this.price,
       })
 

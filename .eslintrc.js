@@ -22,6 +22,7 @@ module.exports = {
     templatePageHeader: 'readonly',
     templatePizzaForm: 'readonly',
     templateShowCurrentOrder: 'readonly',
+    templateFinishedOrdering: 'readonly',
     templateTestResult: 'readonly',
     templateTestSpacer: 'readonly',
 

@@ -179,6 +179,26 @@ const templateShowCurrentOrder = ({
   return template.content.firstChild
 }
 
+const templateFinishedOrdering = ({
+  pizzaCount = 0,
+  price = 0,
+} = {}) => {
+  const template = document.createElement('template')
+
+  template.innerHTML = `
+    <div class="row">
+      <h2>Thanks for ordering from us!</h2>
+      <p>You ordered ${pizzaCount} pizza for a total of $${price}.</p>
+      <p>
+        We are a startup so we don't actually have a kitchen. We appreciate your interest though! When we do get a kitchen set up, we'll begin work on your pizzas right away.
+      </p>
+    </div>
+  `.trim()
+
+  console.log('WHAT', template)
+  return template.content.firstChild
+}
+
 const templateTestResult = ({
   description = '',
   valid = '',
