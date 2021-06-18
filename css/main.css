@@ -1,0 +1,12 @@
+
+nav {
+  border-bottom: 2px solid #3FB0AC;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+p + p {
+  margin-top: 1rem;
+}

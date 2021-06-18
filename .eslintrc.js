@@ -10,6 +10,11 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
+  globals: {
+    templateTestResult: 'readonly',
+    templateTestSpacer: 'readonly',
+    TestManager: 'readonly',
+  },
   rules: {
     'comma-dangle': ['error', 'always-multiline'],
   },
