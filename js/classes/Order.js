@@ -76,6 +76,16 @@ class Order {
     if (btnAddPizza) {
       btnAddPizza.addEventListener('click', () => this.beginOrdering())
     }
+
+    const btnRemovePizza = document.querySelectorAll('[data-action="remove-pizza"]')
+
+    for (const elButton of btnRemovePizza) {
+      elButton.addEventListener('click', (event) => {
+        const index = event.currentTarget.dataset.pizzaIndex
+        this.pizzas.splice(index, 1)
+        this.render()
+      })
+    }
   }
 
   render () {

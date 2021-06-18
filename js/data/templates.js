@@ -128,8 +128,13 @@ const templateShowCurrentOrder = ({
     return `
       <div class="pizza-item col-12">
         <div class="card">
-          <div class="card-header">
+          <div class="card-header d-flex justify-content-between">
             <h4>${name} $${pizza.price}</h4>
+            <button 
+              class="btn btn-danger"
+              data-action="remove-pizza"
+              data-pizza-index="${index}"
+            >Remove</button>
           </div>
           <div class="card-body">
             <dl>
@@ -160,6 +165,7 @@ const templateShowCurrentOrder = ({
           id="action-new-pizza" 
           class="btn btn-primary"
         >Add Another</button>
+
         <button 
           id="action-checkout" 
           class="btn btn-success"
