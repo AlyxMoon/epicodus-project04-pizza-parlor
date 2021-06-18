@@ -180,5 +180,8 @@ Result: 13.5
 
 ## Sources and Libraries
 
+### Images
+- Pizza hero image: [Photo by Engin Akyurt from Pexels](https://www.pexels.com/photo/pizza-2619967/)
+
 ### External Libraries Used
 - Bootstrap v5.0.1
