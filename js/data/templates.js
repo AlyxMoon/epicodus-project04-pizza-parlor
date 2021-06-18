@@ -80,6 +80,10 @@ const templatePizzaForm = ({
 
   template.innerHTML = `
     <form id="pizzaForm" class="row">
+      <header class="h2">
+        Select Options for Your Pizza
+      </header>
+
       <div class="col-12 my-2">
         <label for="input-pizza-size">Size</label>
         <select id="input-pizza-size" name="input-pizza-size" class="form-select">
@@ -149,7 +153,10 @@ const templateShowCurrentOrder = ({
 
               <dt>Toppings</dt>
               <dd>
-                <ul class="list-group">${toppingsContent}</ul>
+                ${toppingsContent
+                  ? `<ul class="list-group">${toppingsContent}</ul>`
+                  : 'N/A'
+                }
               </dd>
             </dl>
           </div>
@@ -195,7 +202,6 @@ const templateFinishedOrdering = ({
     </div>
   `.trim()
 
-  console.log('WHAT', template)
   return template.content.firstChild
 }
 
