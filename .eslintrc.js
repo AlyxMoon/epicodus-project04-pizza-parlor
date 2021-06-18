@@ -20,6 +20,7 @@ module.exports = {
     addTestsForPizza: 'readonly',
 
     templatePageHeader: 'readonly',
+    templatePizzaForm: 'readonly',
     templateTestResult: 'readonly',
     templateTestSpacer: 'readonly',
 

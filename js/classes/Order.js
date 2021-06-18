@@ -26,6 +26,7 @@ class Order {
 
   beginOrdering () {
     this.state = 'begin-ordering'
+    this.pizzas.push(new Pizza())
     this.render()
   }
 
@@ -47,6 +48,14 @@ class Order {
 
     if (ordering) {
       document.querySelector(this.selectors.header).classList.add('small')
+
+      const activePizza = this.pizzas[this.pizzas.length - 1]
+
+      const content = document.querySelector(this.selectors.content)
+      const contentTemplate = templatePizzaForm({ pizza: activePizza })
+
+      content.innerHTML = ''
+      content.append(contentTemplate)
     } else {
       document.querySelector(this.selectors.header).classList.remove('small')
     }

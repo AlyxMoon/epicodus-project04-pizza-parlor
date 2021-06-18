@@ -1,4 +1,3 @@
-
 /* eslint-disable no-unused-vars */
 
 const templatePageHeader = ({
@@ -20,6 +19,92 @@ const templatePageHeader = ({
     <div class="hero-content">
       ${!ordering ? headerContent : ''}
     </div>
+  `.trim()
+
+  return template.content.firstChild
+}
+
+const templatePizzaForm = ({
+  pizza = {},
+} = {}) => {
+  const template = document.createElement('template')
+
+  const sizeOptions = Object.entries(pizzaSizes).map(([type, data]) => {
+    const selected = pizza.size === type
+
+    return `
+      <option value="${type}" ${selected ? 'selected' : ''}>
+        ${type} ($${data.price})
+      </option>
+    `.trim()
+  }).join('')
+
+  const sauceOptions = Object.entries(pizzaSauces).map(([type, data]) => {
+    const selected = pizza.sauce === type
+
+    return `
+      <option value="${type}" ${selected ? 'selected' : ''}>
+        ${type} ($${data.price})
+      </option>
+    `.trim()
+  }).join('')
+
+  const cheeseOptions = Object.entries(pizzaCheeses).map(([type, data]) => {
+    const selected = pizza.cheese === type
+
+    return `
+      <option value="${type}" ${selected ? 'selected' : ''}>
+        ${type} ($${data.price})
+      </option>
+    `.trim()
+  }).join('')
+
+  const toppingOptions = Object.entries(pizzaToppings).map(([type, data]) => {
+    const selected = pizza.toppings.includes(type)
+
+    return `
+      <div class="form-check">
+        <input
+          type="checkbox"
+          id="input-pizza-topping-${type}" 
+          class="form-check-input" 
+          ${selected ? 'checked' : ''}
+        />
+        <label for="input-pizza-topping-${type}">
+          ${type} ($${data.price})
+        </label>
+      </div>
+    `.trim()
+  }).join('')
+
+  template.innerHTML = `
+    <form class="row">
+      <div class="col-12">
+        <label for="input-pizza-size">Size</label>
+        <select id="input-pizza-size" class="form-select">
+          ${sizeOptions}
+        </select>
+      </div>
+
+      <div class="col-12">
+        <label for="input-pizza-sauce">Sauce</label>
+        <select id="input-pizza-sauce" class="form-select">
+          ${sauceOptions}
+        </select>
+      </div>
+
+      <div class="col-12">
+        <label for="input-pizza-cheese">Cheese</label>
+        <select id="input-pizza-cheese" class="form-select">
+          ${cheeseOptions}
+        </select>
+      </div>
+
+      <div class="col-12">
+        <p>Toppings</p>
+        ${toppingOptions}
+      </div>
+    </form>
   `.trim()
 
   return template.content.firstChild
