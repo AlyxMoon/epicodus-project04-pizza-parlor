@@ -112,6 +112,19 @@ const templatePizzaForm = ({
   return template.content.firstChild
 }
 
+const templateShowCurrentOrder = ({
+  pizzas = [],
+  price = 0,
+} = {}) => {
+  const template = document.createElement('template')
+
+  template.innerHTML = `
+    <span>hi</span>
+  `.trim()
+
+  return template.content.firstChild
+}
+
 const templateTestResult = ({
   description = '',
   valid = '',

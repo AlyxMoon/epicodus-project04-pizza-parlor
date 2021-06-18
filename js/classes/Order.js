@@ -11,7 +11,17 @@ class Order {
   } = {}) {
     this.pizzas = []
     this.selectors = selectors
-    this.state = 'not-ordering'
+
+    // possible states
+    // intro -> when first starting app
+    // making-pizza -> presents form for pizza
+    // finished-pizza -> pizza has been submitted
+    // finished-ordering -> all done, no more input
+    this.state = 'intro'
+  }
+
+  get price () {
+    return this.getPrice()
   }
 
   addPizza (pizzaOptions) {
@@ -26,7 +36,7 @@ class Order {
   }
 
   beginOrdering () {
-    this.state = 'begin-ordering'
+    this.state = 'making-pizza'
     this.pizzas.push(new Pizza())
     this.render()
   }
@@ -46,6 +56,9 @@ class Order {
     pizza.sauce = sauce
     pizza.cheese = cheese
     pizza.toppings = toppings
+
+    this.state = 'finished-pizza'
+    this.render()
   }
 
   addEventListeners () {
@@ -61,15 +74,19 @@ class Order {
   }
 
   render () {
-    const ordering = this.state !== 'not-ordering'
-
     const header = document.querySelector(this.selectors.header)
-    const headerContent = templatePageHeader({ ordering })
+    const headerContent = templatePageHeader({
+      ordering: this.state !== 'intro',
+    })
 
     header.innerHTML = ''
     header.append(headerContent)
 
-    if (ordering) {
+    if (this.state === 'intro') {
+      document.querySelector(this.selectors.header).classList.remove('small')
+    }
+
+    if (this.state === 'making-pizza') {
       document.querySelector(this.selectors.header).classList.add('small')
 
       const activePizza = this.pizzas[this.pizzas.length - 1]
@@ -79,8 +96,19 @@ class Order {
 
       content.innerHTML = ''
       content.append(contentTemplate)
-    } else {
-      document.querySelector(this.selectors.header).classList.remove('small')
+    }
+
+    if (this.state === 'finished-pizza') {
+      document.querySelector(this.selectors.header).classList.add('small')
+
+      const content = document.querySelector(this.selectors.content)
+      const contentTemplate = templateShowCurrentOrder({
+        pizzas: this.pizzas,
+        price: this.price,
+      })
+
+      content.innerHTML = ''
+      content.append(contentTemplate)
     }
 
     this.addEventListeners()

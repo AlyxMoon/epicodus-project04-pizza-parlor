@@ -40,3 +40,9 @@ Pizza.prototype.getPrice = function () {
 
   return sizePrice + saucePrice + cheesePrice + toppingPrice
 }
+
+Object.defineProperty(Pizza.prototype, 'price', {
+  get: function price () {
+    return this.getPrice()
+  },
+})
