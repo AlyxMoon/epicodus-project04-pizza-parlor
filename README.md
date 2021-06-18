@@ -38,6 +38,21 @@ To set up `eslint` though, you need the following:
 
 ## Explanation of Code
 
+I'll be honest out the gate, I felt very uninspired by this project and it was difficult making anything happen. Ah well, happens to the best of us.
+
+The general flow of this site can be described as follows:
+- the page loads, user gets a hero image prompting them to begin ordering
+- once they hit the button, they are taken to a page where they can fill out information for a pizza
+- when the submit that form, they see a page with all the pizzas they have created thus far
+   - they can choose to create a new pizza, which repeats the previous two steps
+   - or, they can choose to checkout, which takes them to a final page where they get some brief info on their order
+
+Most of the content that gets displayed on the page is defined inside the `js/data/templates.js` file, where template functions take some arguments and return an HTML `<template></template>` element to be rendered in the JS.
+
+The `Order` class (js/classes/Order.js) handles most of the behavior. It keeps track of the state (which part of the process the user is on) and renders the appropriate template.
+
+The `Pizza` class (js/classes/Pizza.js) keeps track of the ingredients and price for an individual pizza. It uses the function prototype syntax to create its class behavior.
+
 ## Objectives
 - Code meets standards from previous weeks.
 - Constructors and prototypes are used successfully.
