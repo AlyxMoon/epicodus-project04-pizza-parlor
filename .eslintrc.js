@@ -11,8 +11,10 @@ module.exports = {
     sourceType: 'module',
   },
   globals: {
+    addTestsForPizza: 'readonly',
     templateTestResult: 'readonly',
     templateTestSpacer: 'readonly',
+    Pizza: 'readonly',
     TestManager: 'readonly',
   },
   rules: {

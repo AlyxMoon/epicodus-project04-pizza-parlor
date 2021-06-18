@@ -2,5 +2,8 @@
 
 /* eslint-disable-next-line no-unused-vars */
 function Pizza () {
-
+  this.size = 'medium'
+  this.sauce = 'tomato'
+  this.cheese = 'mozzarella'
+  this.toppings = []
 }

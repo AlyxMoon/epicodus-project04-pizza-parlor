@@ -48,6 +48,10 @@ class TestManager {
   }
 
   checkActualEqualsExpected (actual, expected) {
+    if (typeof expected === 'function') {
+      return expected(actual)
+    }
+
     if (Array.isArray(actual) && Array.isArray(expected)) {
       return (
         actual.length === expected.length &&
@@ -63,7 +67,15 @@ class TestManager {
     container = '#output-tests',
     logToConsole = true,
   } = {}) {
-    const incorrectText = `Incorrect | actual: ${result.actual} | expected: ${result.expected}`
+    const actual = typeof result.actual === 'object'
+      ? JSON.stringify(result.actual)
+      : result.actual
+
+    const expected = typeof result.expected === 'object'
+      ? JSON.stringify(result.expected)
+      : result.expected
+
+    const incorrectText = `Incorrect | actual: ${actual} | expected: ${expected}`
 
     if (logToConsole) {
       console.log(`%c${result.description}`, 'font-weight: bold;')
