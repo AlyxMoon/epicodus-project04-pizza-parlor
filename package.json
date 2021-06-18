@@ -1,0 +1,16 @@
+{
+  "name": "epicodus-project04-pizza-parlor",
+  "version": "1.0.0",
+  "author": "AlyxMoon <allisterkmoon@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint js/**"
+  },
+  "devDependencies": {
+    "eslint": "^7.12.1",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1"
+  }
+}
