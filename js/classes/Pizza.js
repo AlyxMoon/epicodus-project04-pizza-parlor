@@ -12,3 +12,12 @@ function Pizza ({
   this.cheese = cheese
   this.toppings = toppings.slice()
 }
+
+Pizza.prototype.addTopping = function (topping) {
+  const index = this.toppings.indexOf(topping)
+
+  if (index > -1) return
+  this.toppings.push(topping)
+
+  return this
+}

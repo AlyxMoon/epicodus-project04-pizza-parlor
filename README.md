@@ -105,6 +105,22 @@ Code: new Pizza({ size: 'large', sauce: 'none', cheese: 'feta', toppings: ['pepp
 Result: Pizza {size: "large", sauce: "none", cheese: "feta", toppings: ['pepperoni', 'mushrooms']}
 ```
 
+```
+Test: Pizza.addTopping() will add that topping to the list
+Code: 
+const pizza = new Pizza({ toppings: ['pepperoni'] })
+pizza.addTopping('sausage')
+Result: pizza.toppings === ['pepperoni', 'sausage']
+```
+
+```
+Test: Pizza.addTopping() will not add a topping already in the list
+Code: 
+const pizza = new Pizza({ toppings: ['pineapple'] })
+pizza.addTopping('pineapple')
+Result: pizza.toppings === ['pineapple']
+```
+
 ## Sources and Libraries
 
 ### External Libraries Used

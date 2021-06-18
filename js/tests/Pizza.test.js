@@ -34,4 +34,24 @@ const addTestsForPizza = testManager => {
       )
     },
   })
+
+  testManager.addTest({
+    description: 'Pizza.addTopping() will add that topping to the list',
+    func: () => {
+      const pizza = new Pizza({ toppings: ['pepperoni'] })
+      pizza.addTopping('sausage')
+      return pizza.toppings
+    },
+    expected: ['pepperoni', 'sausage'],
+  })
+
+  testManager.addTest({
+    description: 'Pizza.addTopping() will not add a topping already in the list',
+    func: () => {
+      const pizza = new Pizza({ toppings: ['pineapple'] })
+      pizza.addTopping('pineapple')
+      return pizza.toppings
+    },
+    expected: ['pineapple'],
+  })
 }
