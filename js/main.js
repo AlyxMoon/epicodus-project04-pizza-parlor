@@ -17,7 +17,10 @@ const main = () => {
   addTestsForOrder(testManager)
   testManager.runTests()
 
-  addEventListeners()
+  const order = new Order()
+  order.render()
+
+  addEventListeners(order)
 }
 
 main()

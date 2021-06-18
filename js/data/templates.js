@@ -1,6 +1,30 @@
 
 /* eslint-disable no-unused-vars */
 
+const templatePageHeader = ({
+  ordering = false,
+} = {}) => {
+  const template = document.createElement('template')
+
+  const headerContent = `
+    <h1>Pete's Pizza</h1>
+    <h2>pizza, it's what humans crave!</h2>
+    
+    <button
+      id="begin-ordering"
+      class="btn btn-primary mt-2"
+    >Get some pizza</button>
+  `.trim()
+
+  template.innerHTML = `
+    <div class="hero-content">
+      ${!ordering ? headerContent : ''}
+    </div>
+  `.trim()
+
+  return template.content.firstChild
+}
+
 const templateTestResult = ({
   description = '',
   valid = '',

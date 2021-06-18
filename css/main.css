@@ -30,6 +30,12 @@ body > header {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+
+  transition: height 0.5s;
+}
+
+body > header.small {
+  height: 100px;
 }
 
 body > header::after {

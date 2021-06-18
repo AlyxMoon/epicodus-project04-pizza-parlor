@@ -19,6 +19,7 @@ module.exports = {
     addTestsForOrder: 'readonly',
     addTestsForPizza: 'readonly',
 
+    templatePageHeader: 'readonly',
     templateTestResult: 'readonly',
     templateTestSpacer: 'readonly',
 
